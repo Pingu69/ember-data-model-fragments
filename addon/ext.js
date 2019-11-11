@@ -140,7 +140,8 @@ Store.reopen({
   createFragment(modelName, props) {
     assert(`The '${modelName}' model must be a subclass of MF.Fragment`, this.isFragment(modelName));
 
-    let internalModel = new InternalModel(modelName, null, this, getOwner(this).container);
+    const id = Math.floor((Math.random() * 999999999) + 1);
+    let internalModel = new InternalModel(modelName, id, this, getOwner(this).container);
 
     // Re-wire the internal model to use the fragment state machine
     internalModel.currentState = FragmentRootState.empty;
